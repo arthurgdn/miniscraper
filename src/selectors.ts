@@ -1,3 +1,5 @@
+import { extractText } from './formatters';
+
 export const selectMultiple = (parentNode: Element, ...selectors: string[]): Element[] => {
   return [...parentNode.querySelectorAll(selectors.reduce((prev, current) => prev + ', ' + current))];
 };
@@ -17,4 +19,27 @@ export const getLinks = (parentNode: Element, text = ''): string[] => {
     .map((link: any): string => {
       return link.href;
     });
+};
+
+export const objectSelector = (parentNode: Element, selectorModel: any): Object => {
+  const selectedObject = {} as any;
+  for (const key in Object.keys(selectorModel)) {
+    if (typeof selectorModel[key] === 'string') {
+      const content = selectSingle(parentNode, selectorModel[key])?.textContent;
+      if (content) {
+        selectedObject[key] = content;
+      }
+    } else if (Array.isArray(selectorModel[key]) && selectorModel[key].length === 1) {
+      const content = extractText(selectMultiple(parentNode, selectorModel[key][0]));
+      if (content) {
+        selectedObject[key] = content;
+      }
+    } else if (({}).toString.apply(selectorModel[key]) === '[object Object]') {
+      const content = objectSelector(parentNode, selectorModel[key]);
+      if (content) {
+        selectedObject[key] = content;
+      }
+    }
+  }
+  return selectedObject;
 };
