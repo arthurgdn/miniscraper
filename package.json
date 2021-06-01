@@ -1,6 +1,6 @@
 {
   "name": "miniscraper",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Minimal JavaScript Web Scraper",
   "main": "dist/index.js",
   "scripts": {
