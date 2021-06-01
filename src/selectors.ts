@@ -10,7 +10,7 @@ export const getLinks = (parentNode: Element, text = ''): string[] => {
   return selectMultiple(parentNode, 'a')
     .filter(
       (link: any): boolean => {
-        // renvoie false si l'attribut href n'est pas présent
+        // return false if href attribute is undefined
         if (typeof link.href === 'undefined') { return false; }
         return link.href.includes(text);
       })
