@@ -23,7 +23,7 @@ export const getLinks = (parentNode: Element, text = ''): string[] => {
 
 export const objectSelector = (parentNode: Element, selectorModel: any): Object => {
   const selectedObject = {} as any;
-  for (const key in Object.keys(selectorModel)) {
+  for (const key of Object.keys(selectorModel)) {
     if (typeof selectorModel[key] === 'string') {
       const content = selectSingle(parentNode, selectorModel[key])?.textContent;
       if (content) {
