@@ -1,0 +1,56 @@
+{
+  "name": "miniscraper",
+  "version": "0.0.3",
+  "description": "Minimal JavaScript Web Scraper",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "lint": "eslint src/*.ts",
+    "lintfix": "eslint --fix src/*.ts",
+    "build": "tsc",
+    "prepare" : "npm run build",
+    "prepublishOnly" : "npm test && npm run lint",
+    "preversion" : "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/arthurgdn/miniscraper.git"
+  },
+  "keywords": [
+    "scrape",
+    "scraper",
+    "web",
+    "minimal"
+  ],
+  "author": "Arthur Guédon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arthurgdn/miniscrape/issues"
+  },
+  "homepage": "https://github.com/arthurgdn/miniscrape#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "jsdom": "^16.6.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/jsdom": "^16.2.10",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "eslint": "^7.21.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "jest": "^27.0.3",
+    "ts-jest": "^27.0.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.3.2"
+  }
+}
