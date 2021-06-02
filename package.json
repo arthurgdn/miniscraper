@@ -1,7 +1,7 @@
 {
   "name": "miniscraper",
   "version": "0.1.0",
-  "description": "Minimal JavaScript Web Scraper",
+  "description": "Minimalist Node.js web scraper working with under-the-hood JSDOM",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
@@ -21,6 +21,8 @@
     "scrape",
     "scraper",
     "web",
+    "jsdom",
+    "crawler",
     "minimal"
   ],
   "author": "Arthur Guédon",
@@ -30,17 +32,19 @@
   },
   "homepage": "https://github.com/arthurgdn/miniscrape#readme",
   "dependencies": {
-    "axios": "^0.21.1",
-    "jsdom": "^16.6.0"
+    "jsdom": "^16.6.0",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/jsdom": "^16.2.10",
+    "@types/node-fetch": "^2.5.10",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
     "eslint": "^7.21.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.6",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "jest": "^27.0.3",
