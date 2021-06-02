@@ -44,8 +44,7 @@ By fetching all these links, one can then parse all the pages associated.
 import { builder, selectors, formatters } from 'miniscraper';
 
 const { buildDocument } = builder;
-const { selectSingle, selectMultiple, getLinks } = selectors;
-const { extractText } = formatters;
+const { objectSelector, getLinks } = selectors;
 
 (async () => {
     // Promise to build DOM from a specified URL
