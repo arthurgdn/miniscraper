@@ -23,7 +23,14 @@ Here are some frequent questions and their answers.
 The `buildDocument` function from the `builder`package solves this issue. Passing as an argument the `url`of the web page,
 the function returns the parsed DOM.
 
-### 2. How to crawl a website?
+### 2. How to scrape specific data from a web page?
+
+The `objectSelector`API provides an easy way to scrape data from a web page,
+by providing a model object which describes a schema for the data to fetch and its identifiers.
+See the example section for an implementation of this functionality.
+
+
+### 3. How to crawl a website?
 
 `miniscraper`provides a simple function to fetch all links in child nodes of a DOM element.
 The function `getLinks`of the `selectors`package is used to do this. 
@@ -42,24 +49,44 @@ const { extractText } = formatters;
 
 (async () => {
     // Promise to build DOM from a specified URL
-    const document = await buildDocument('example.url');
+    const document = await buildDocument('example.com');
 
-    // selectSingle function to extract the first node matching the query passed
-    const title = selectSingle(document, '.title').textContent;
+    const model = {
+        title: '.title',    // returns the text content of first element matching this selector
+        names: ['.name'],   // returns an array of the text content of all elements matching this selector
+        metadata: {         // nested model object to format the returned results
+            date: '.date',
+            languages: ['.language']
+        }
+    }
 
-    // selectMultiple returns and array of nodes matching the query passed
-    // the extractText function maps the text content of this array of nodes
-    const names = extractText(selectMultiple(document, '.name'));
+    const scrapingResults = objectSelector(document, model);
+    console.log(scrapingResults);
+    /*
+    {
+        title: 'Website title',
+        names: [ 'John', 'Peter', 'James' ],
+        metadate: {
+            date: '4/17/2021',
+            languages: [ 'French', 'English', 'Spanish' ]
+        }
+    }
+    */
 
     // array of links which contain the 'link' string
+    // easy to use feature to build a web crawler
     const links = getLinks(document, 'link')
+    console.log(links);
+    /*
+    [ 'http://example.com/link/154464', 'http://example.com/link/16516' ]
+    */
 })();
 ```
 
 ## :dizzy: Current development
 
 This package is at the very beginning of its development, new features are coming soon:
-* Object modeling from DOM
+* Improve Object Selector API
 * Automatic crawler
 * Customizing and filtering DOM tree
 
