@@ -1,5 +1,9 @@
 import { extractText } from './formatters';
 
+interface StringObject {
+  [key: string]: any;
+}
+
 export const selectMultiple = (parentNode: Element, ...selectors: string[]): Element[] => {
   return [...parentNode.querySelectorAll(selectors.reduce((prev, current) => prev + ', ' + current))];
 };
@@ -21,7 +25,7 @@ export const getLinks = (parentNode: Element, text = ''): string[] => {
     });
 };
 
-export const objectSelector = (parentNode: Element, selectorModel: any): Object => {
+export const objectSelector = <Type extends StringObject>(parentNode: Element, selectorModel: Type): Type => {
   const selectedObject = {} as any;
   for (const key of Object.keys(selectorModel)) {
     if (typeof selectorModel[key] === 'string') {
