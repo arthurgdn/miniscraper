@@ -4,7 +4,6 @@ import fetch from 'node-fetch';
 export const buildDocument = async (url: string): Promise<Element> => {
   try {
     const response = await (await fetch(url)).text();
-    console.log(response);
     if (!response) {
       throw new Error('Unable to fetch corresponding URL');
     }
