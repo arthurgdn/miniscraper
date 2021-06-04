@@ -1,6 +1,6 @@
 {
   "name": "miniscraper",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Minimalist Node.js web scraper working with under-the-hood JSDOM",
   "main": "dist/index.js",
   "scripts": {
