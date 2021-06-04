@@ -10,6 +10,7 @@ export const buildDocument = async (url: string): Promise<Element> => {
     const dom = new JSDOM(response);
     return dom.window.document as unknown as Element;
   } catch (e) {
+    console.log(e);
     throw new Error('Error while building document');
   }
 };

@@ -39,8 +39,11 @@ export const objectSelector = <Type extends StringObject>(parentNode: Element, s
         selectedObject[key] = content;
       }
     } else if (({}).toString.apply(selectorModel[key]) === '[object Object]') {
-      const content = objectSelector(parentNode, selectorModel[key]);
-      if (content) {
+      const { content } = objectSelector(parentNode, {content: selectorModel[key].selector});
+      const transformer = selectorModel[key].transformer;
+      if (content && transformer) {
+        selectedObject[key] = transformer(content);
+      }else if (content){
         selectedObject[key] = content;
       }
     }
