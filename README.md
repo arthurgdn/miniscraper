@@ -52,11 +52,7 @@ const { objectSelector, getLinks } = selectors;
 
     const model = {
         title: '.title',    // returns the text content of first element matching this selector
-        names: ['.name'],   // returns an array of the text content of all elements matching this selector
-        metadata: {         // nested model object to format the returned results
-            date: '.date',
-            languages: ['.language']
-        }
+        names: { selector: ['.name'], transformer: (name)=> name.trim() },   // returns an array of the text content of all elements matching this selector and transforms the results with a callback function
     }
 
     const scrapingResults = objectSelector(document, model);
@@ -65,10 +61,6 @@ const { objectSelector, getLinks } = selectors;
     {
         title: 'Website title',
         names: [ 'John', 'Peter', 'James' ],
-        metadate: {
-            date: '4/17/2021',
-            languages: [ 'French', 'English', 'Spanish' ]
-        }
     }
     */
 
