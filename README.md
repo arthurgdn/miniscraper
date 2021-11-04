@@ -72,7 +72,7 @@ const { objectSelector, getLinks } = selectors;
 })();
 ```
 
-Versions 0.2.1 and above support for now the experimental version of a Google Search scraper. Use the `crawlGoogle` function from the `crawlers` package to get the top search results links from a specific search term. Here is an example :
+Versions 0.2.1 and above support for now the experimental version of a Google Search scraper. Use the `crawlGoogle` function from the `crawlers` package to get the top search results from a specific search term. Here is an example :
 
 ```js
 import { crawlers } from "miniscraper";
@@ -80,17 +80,27 @@ import { crawlers } from "miniscraper";
 (async () => {
   const searchResults = await crawlers.crawlGoogle("npm miniscraper");
   console.log(searchResults);
-  // Expected results
-  //   [
-  //   'https://libraries.io/npm/miniscraper',
-  //   'https://www.npmjs.com/search?q=jsdom&page=7',
-  //   'https://www.pelitool.com/grattoirs-eponges/483-mini-grattoir-a-vitres-4cm.html',
-  //   'https://npm.io/search/keyword%3AJsDOM/12',
-  //   'https://www.cdiscount.com/le-sport/sports-d-hiver-ski-snowboard/pads-burton-mini-scraper-mats-black/f-121420203-bur6400000041043.html',
-  //   'https://www.darty.com/nav/achat/jeux_loisirs/jeux_de_societe/jeux_de_cartes/mammut_mini_scraper_silber_katze__MK1528090525.html',
-  //   'http://kendalfloral.com/avec-lames-et/Outillage-%C3%A0-main-et-%C3%A9lectroportatif-ylywj-366461.shtm',
-  //'https://french.alibaba.com/product-detail/square-white-small-scraper-plastic-bubble-removal-tool-professional-car-color-changing-filming-tool-mini-scraper-1600275665918.html',
-  //   'https://www.championtimber.com/neon-plastic-mini-scraper-blade-promo'
+  //Expected results
+  // [
+  //   {
+  //     url: 'https://libraries.io/npm/miniscraper',
+  //     title: 'miniscraper 0.2.1 on npm - Libraries.io',
+  //     description: '1 juin 2021 — miniscraper provides a simple function to fetch all links in child nodes of a DOM element. The function getLinks of the selectors package is ...'  },
+  //   {
+  //     url: 'https://www.workersandco.com/fr/accueil/9667-.html',
+  //     title: 'AUTO R MINI SCRAPER',
+  //     description: "Désignation unique AUTO R MINI SCRAPER 10590; Nom modèle AUTO R MINI SCRAPER; Référence modèle 10590; Marque SLICE; Pays d'origine CHINE ..."
+  //   },
+  //   {
+  //     url: 'https://www.npmjs.com/search?q=jsdom&page=7',
+  //     title: 'jsdom - npm search',
+  //     description: 'AngularJS provided as a CommonJS module. Compiled with jsdom when running in Node. Useful for client-side apps built with Browserify and for testing AngularJS ...'
+  //   },
+  //   {
+  //     url: 'https://www.darty.com/nav/achat/jeux_loisirs/jeux_de_societe/jeux_de_cartes/mammut_mini_scraper_silber_katze__MK1528090525.html',
+  //     title: 'Jeux de cartes Mammut Mini - scraper silber - katze | Darty',
+  //     description: 'COLIS LIVRE SOUS 5 JOURS OUVRES EN MOYENNE EN ENVOI SUIVI; Livraison en France Metropolitaine uniquement HORS Corse et DOM-TOM; Produit NEUF sous garantie ...'  },
+  //   ...
   // ]
 })();
 ```

@@ -1,7 +1,7 @@
 {
   "name": "miniscraper",
-  "version": "0.2.1",
-  "description": "Minimalist Node.js web scraper working with under-the-hood JSDOM",
+  "version": "0.2.2",
+  "description": "Minimalist Node.js web scraper and crawler working with under-the-hood JSDOM",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
@@ -20,10 +20,13 @@
   "keywords": [
     "scrape",
     "scraper",
-    "web",
     "jsdom",
     "crawler",
-    "minimal"
+    "html",
+    "parser",
+    "htmlparser",
+    "dom",
+    "crawling"
   ],
   "author": "Arthur Guédon",
   "license": "MIT",
