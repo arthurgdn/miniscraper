@@ -36,7 +36,8 @@
   "homepage": "https://github.com/arthurgdn/miniscrape#readme",
   "dependencies": {
     "jsdom": "^16.6.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "puppeteer": "^13.0.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
